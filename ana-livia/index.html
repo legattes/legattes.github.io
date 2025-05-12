@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -10,7 +11,7 @@
             height: 100%;
             overflow-x: hidden;
         }
-        
+
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -18,9 +19,10 @@
             color: #a0e6a0;
             position: relative;
             min-height: 100%;
-            background-color: #000; /* Fallback */
+            background-color: #000;
+            /* Fallback */
         }
-        
+
         /* Fixed background layer */
         .bg-fixed {
             position: fixed;
@@ -36,7 +38,7 @@
             -o-background-size: cover;
             image-rendering: crisp-edges;
         }
-        
+
         /* Dark overlay */
         .bg-overlay {
             position: fixed;
@@ -235,9 +237,11 @@
                 transform: rotate(45deg) translateY(0) scale(1);
                 opacity: 0;
             }
+
             50% {
                 opacity: 0.8;
             }
+
             100% {
                 transform: rotate(45deg) translateY(-200px) scale(0.5);
                 opacity: 0;
