@@ -1,20 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>1 Mês - Lucas & Ana Lívia ❤️</title>
     <style>
+        /* ===== FIXED BACKGROUND SOLUTION ===== */
+        html {
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
-            overflow-x: hidden;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('./img/bg.JPG') fixed no-repeat center center;
-            background-size: cover;
+            padding: 0;
             color: #a0e6a0;
+            position: relative;
+            min-height: 100%;
+            background-color: #000; /* Fallback */
+        }
+        
+        /* Fixed background layer */
+        .bg-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./img/bg.JPG') center/cover no-repeat;
+            z-index: -2;
+            background-size: cover;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            image-rendering: crisp-edges;
+        }
+        
+        /* Dark overlay */
+        .bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
         }
 
+        /* ===== REST OF YOUR STYLES ===== */
         .container {
             min-height: 100vh;
             padding: 20px;
@@ -72,7 +106,6 @@
             transform: scale(1.05);
         }
 
-        /* Page 2 Styles */
         #page2 {
             display: none;
             max-width: 800px;
@@ -133,8 +166,6 @@
         .timeline-item:nth-child(even) .timeline-content {
             margin-right: 42%;
         }
-
-        /* Removed all ::before triangle styles */
 
         .timeline-img {
             width: 100%;
@@ -204,11 +235,9 @@
                 transform: rotate(45deg) translateY(0) scale(1);
                 opacity: 0;
             }
-
             50% {
                 opacity: 0.8;
             }
-
             100% {
                 transform: rotate(45deg) translateY(-200px) scale(0.5);
                 opacity: 0;
@@ -218,6 +247,10 @@
 </head>
 
 <body>
+    <!-- Fixed Background Elements -->
+    <div class="bg-fixed"></div>
+    <div class="bg-overlay"></div>
+
     <!-- Page 1: Code Input -->
     <div id="page1" class="container">
         <h1>Você ainda tem o código? ❤️</h1>
