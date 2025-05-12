@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matrix Style Page</title>
+    <title>Para o Amor da Minha Vida ❤️</title>
     <style>
         body {
-            background-color: black;
-            color: #00FF00;
-            font-family: 'Courier New', monospace;
+            background-color: #0a0a0a;
+            color: #a0e6a0; /* Soft green */
+            font-family: 'Arial', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -16,117 +16,161 @@
             height: 100vh;
             margin: 0;
             overflow: hidden;
-        }
-        
-        .matrix-text {
-            margin-bottom: 20px;
-            font-size: 24px;
             text-align: center;
         }
-        
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #d4af37; /* Gold for emphasis */
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff6b6b;
+            transform: rotate(45deg);
+            opacity: 0;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .heart:before, .heart:after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart:after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(45deg) translateY(0) scale(1); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: rotate(45deg) translateY(-200px) scale(0.5); opacity: 0; }
+        }
+
         .input-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            margin-top: 20px;
         }
-        
+
         input {
-            background-color: black;
-            color: #00FF00;
-            border: 1px solid #00FF00;
-            padding: 10px;
-            font-family: 'Courier New', monospace;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #a0e6a0;
+            border: 2px solid #a0e6a0;
+            border-radius: 10px;
+            padding: 12px;
+            font-family: 'Arial', sans-serif;
             font-size: 16px;
-            width: 300px;
+            width: 250px;
+            text-align: center;
+            outline: none;
+            transition: all 0.3s;
         }
-        
+
+        input:focus {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
         button {
-            background-color: black;
-            color: #00FF00;
-            border: 1px solid #00FF00;
-            padding: 10px 20px;
-            font-family: 'Courier New', monospace;
+            background-color: #1a3a1a;
+            color: #a0e6a0;
+            border: 2px solid #a0e6a0;
+            border-radius: 10px;
+            padding: 10px 25px;
+            font-family: 'Arial', sans-serif;
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s;
         }
-        
+
         button:hover {
-            background-color: #00FF00;
-            color: black;
+            background-color: #a0e6a0;
+            color: #0a0a0a;
+            transform: scale(1.05);
         }
-        
-        /* Matrix rain effect */
-        .matrix-rain {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.3;
+
+        .hidden-message {
+            display: none;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #d4af37;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
+            to { text-shadow: 0 0 15px rgba(212, 175, 55, 0.8); }
         }
     </style>
 </head>
 <body>
-    <div class="matrix-text">você ainda tem o código?</div>
+    <h1>Você ainda tem o código? ❤️</h1>
     
     <div class="input-container">
-        <input type="text" id="codeInput" placeholder="Enter the code...">
+        <input type="text" id="codeInput" placeholder="Digite o código especial...">
         <button id="okButton">OK</button>
     </div>
-    
-    <canvas id="matrixRain" class="matrix-rain"></canvas>
-    
+
+    <div id="hiddenMessage" class="hidden-message">
+        Feliz 1 ano, amor da minha vida! 🥂💖
+    </div>
+
     <script>
-        // Simple Matrix rain effect
-        const canvas = document.getElementById('matrixRain');
-        const ctx = canvas.getContext('2d');
-        
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const chars = "01";
-        const fontSize = 14;
-        const columns = canvas.width / fontSize;
-        
-        const drops = [];
-        for (let i = 0; i < columns; i++) {
-            drops[i] = 1;
+        // Create floating hearts
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+            heart.style.opacity = '0';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
         }
-        
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#00FF00';
-            ctx.font = fontSize + 'px monospace';
-            
-            for (let i = 0; i < drops.length; i++) {
-                const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
-                }
-                
-                drops[i]++;
-            }
-        }
-        
-        setInterval(draw, 33);
-        
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-        
-        // Button click handler
+
+        setInterval(createHearts, 300);
+
+        // Handle button click
         document.getElementById('okButton').addEventListener('click', () => {
-            const code = document.getElementById('codeInput').value;
-            alert('You entered: ' + code);
+            const code = document.getElementById('codeInput').value.toLowerCase();
+            const hiddenMessage = document.getElementById('hiddenMessage');
+            
+            if (code === 'amor' || code === 'te amo' || code === '1 ano') {
+                hiddenMessage.style.display = 'block';
+                
+                // Create a burst of hearts on success
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(createHearts, i * 100);
+                }
+            } else {
+                alert('Tente novamente... lembre-se do nosso amor! ❤️');
+            }
+        });
+
+        // Also trigger on Enter key
+        document.getElementById('codeInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                document.getElementById('okButton').click();
+            }
         });
     </script>
 </body>
