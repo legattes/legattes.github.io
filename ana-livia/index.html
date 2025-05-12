@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>1 Mês - Lucas & Ana Lívia ❤️</title>
     <style>
         /* ===== BASE STYLES ===== */
-        html, body {
+        html,
+        body {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -29,7 +32,7 @@
             background-size: cover;
             image-rendering: crisp-edges;
         }
-        
+
         body::after {
             content: '';
             position: fixed;
@@ -63,10 +66,10 @@
             display: none;
         }
 
-        /* ===== TIMELINE WITH CLOSER ITEMS ===== */
+        /* ===== TIMELINE WITH CARD STYLE ===== */
         .timeline-container {
             position: relative;
-            padding: 40px 10px; /* Added horizontal padding */
+            padding: 40px 10px;
             width: 100%;
             overflow: hidden;
         }
@@ -91,23 +94,37 @@
         }
 
         .timeline-content {
-            width: 48%; /* Increased width for better content fit */
+            width: 48%;
             background: rgba(0, 0, 0, 0.7);
             border: 1px solid #a0e6a0;
             border-radius: 10px;
-            padding: 15px;
+            padding: 0;
             position: relative;
             z-index: 2;
             box-sizing: border-box;
-            /* Shadow for depth */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        /* Right side items (odd) - closer to line with triangle */
+        /* Photo container - full width */
+        .photo-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-bottom: 1px solid #a0e6a0;
+        }
+
+        /* Text content with padding */
+        .text-content {
+            padding: 12px 15px;
+        }
+
+        /* Right side items (odd) */
         .timeline-item:nth-child(odd) .timeline-content {
             float: right;
-            margin-right: 1%; /* Reduced margin */
+            margin-right: 1%;
         }
+
         .timeline-item:nth-child(odd) .timeline-content::before {
             content: '';
             position: absolute;
@@ -121,11 +138,12 @@
             transform: translateY(-50%);
         }
 
-        /* Left side items (even) - closer to line with triangle */
+        /* Left side items (even) */
         .timeline-item:nth-child(even) .timeline-content {
             float: left;
-            margin-left: 1%; /* Reduced margin */
+            margin-left: 1%;
         }
+
         .timeline-item:nth-child(even) .timeline-content::after {
             content: '';
             position: absolute;
@@ -139,29 +157,34 @@
             transform: translateY(-50%);
         }
 
-        /* ===== MEDIA QUERIES ===== */
-        @media (max-width: 600px) {
-            .timeline-content {
-                width: 46%; /* Slightly narrower on small screens */
-                padding: 12px;
-            }
-            .timeline-img,
-            .timeline-video {
-                max-height: 300px;
-            }
-        }
-
-        /* ===== COMMON ELEMENTS ===== */
+        /* Media elements */
         .timeline-img,
         .timeline-video {
             width: 100%;
-            max-height: 400px;
             object-fit: cover;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            border: 2px solid #d4af37;
+            border-radius: 6px 6px 0 0;
+            margin: 0;
+            border: none;
+            display: block;
         }
 
+        /* Text elements */
+        .timeline-date {
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .timeline-desc {
+            font-style: italic;
+            line-height: 1.5;
+            font-size: 16px;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        /* ===== COMMON ELEMENTS ===== */
         h1 {
             font-size: 28px;
             margin-bottom: 20px;
@@ -214,6 +237,10 @@
             max-width: 700px;
         }
 
+        .love-letter p {
+            color: #FFFFFF;
+        }
+
         /* Heart animation styles */
         .heart {
             position: absolute;
@@ -250,16 +277,35 @@
                 transform: rotate(45deg) translateY(0) scale(1);
                 opacity: 0;
             }
+
             50% {
                 opacity: 0.8;
             }
+
             100% {
                 transform: rotate(45deg) translateY(-200px) scale(0.5);
                 opacity: 0;
             }
         }
+
+        /* ===== MEDIA QUERIES ===== */
+        @media (max-width: 600px) {
+            .timeline-content {
+                width: 46%;
+            }
+
+            .timeline-img,
+            .timeline-video {
+                max-height: 300px;
+            }
+
+            .text-content {
+                padding: 10px 12px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <!-- Page 1: Code Input -->
     <div id="page1" class="container">
@@ -272,7 +318,7 @@
 
     <!-- Page 2: Content -->
     <div id="page2" class="container">
-        <h1>Feliz 1 mês de namoro ❤️</h1>
+        <h1 style="font-size: 3em;">Feliz 1 mês de namoro ❤️</h1>
 
         <div class="love-letter">
             <p>Ana Lívia,</p>
@@ -301,183 +347,273 @@
         <div class="timeline-container">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/23-03-25.JPG" alt="Nosso primeiro encontro" class="timeline-img">
-                    <div class="timeline-date">23/03/2025</div>
-                    <p class="timeline-desc">Nosso primeiro encontro</p>
+                    <div class="photo-container">
+                        <img src="./img/23-03-25.JPG" alt="Nosso primeiro encontro" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">23/03/2025</div>
+                        <p class="timeline-desc">Nosso primeiro encontro</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/23-03-251.jpg" alt="Encontro especial" class="timeline-img">
-                    <div class="timeline-date">23/03/2025</div>
-                    <p class="timeline-desc">Eu super feliz que tava indo muito bem o encontro, pois tinha me apaixonado
-                        já</p>
+                    <div class="photo-container">
+                        <img src="./img/23-03-251.jpg" alt="Encontro especial" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">23/03/2025</div>
+                        <p class="timeline-desc">Eu super feliz que tava indo muito bem o encontro, pois tinha me
+                            apaixonado já</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/28-03-25.JPG" alt="Primeira foto juntos" class="timeline-img">
-                    <div class="timeline-date">27-28/03/2025</div>
-                    <p class="timeline-desc">Nossa primeira foto juntos, foi a primeira vez que você veio em casa</p>
+                    <div class="photo-container">
+                        <img src="./img/28-03-25.JPG" alt="Primeira foto juntos" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">27-28/03/2025</div>
+                        <p class="timeline-desc">Nossa primeira foto juntos, foi a primeira vez que você veio em
+                            casa</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/29-03-251.JPG" alt="Festival de comida nordestina" class="timeline-img">
-                    <div class="timeline-date">29/03/2025</div>
-                    <p class="timeline-desc">Fomos comer no festival de comida nordestina</p>
+                    <div class="photo-container">
+                        <img src="./img/29-03-251.JPG" alt="Festival de comida nordestina" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">29/03/2025</div>
+                        <p class="timeline-desc">Fomos comer no festival de comida nordestina</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/29-03-25.JPG" alt="Momento especial" class="timeline-img">
-                    <div class="timeline-date">29/03/2025</div>
-                    <p class="timeline-desc">Você começando a mostrar que foi feita pra mim</p>
+                    <div class="photo-container">
+                        <img src="./img/29-03-25.JPG" alt="Momento especial" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">29/03/2025</div>
+                        <p class="timeline-desc">Você começando a mostrar que foi feita pra mim</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/30-03-25.jpg" alt="Foto especial" class="timeline-img">
-                    <div class="timeline-date">30/03/2025</div>
-                    <p class="timeline-desc">Foto que tiramos juntos, gosto muito dela</p>
+                    <div class="photo-container">
+                        <img src="./img/30-03-25.jpg" alt="Foto especial" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">30/03/2025</div>
+                        <p class="timeline-desc">Foto que tiramos juntos, gosto muito dela</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/05-04-25.JPG" alt="Café da manhã" class="timeline-img">
-                    <div class="timeline-date">05/04/2025</div>
-                    <p class="timeline-desc">Café da manhã que tomamos juntos, momento delicioso ao seu lado</p>
+                    <div class="photo-container">
+                        <img src="./img/05-04-25.JPG" alt="Café da manhã" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">05/04/2025</div>
+                        <p class="timeline-desc">Café da manhã que tomamos juntos, momento delicioso ao seu lado</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/06-04-25.jpg" alt="Macarrão apimentado" class="timeline-img">
-                    <div class="timeline-date">06/04/2025</div>
-                    <p class="timeline-desc">Foto onde você me mostrou pro mundo, no rolê do macarrão ultra apimentado
-                        kkkkkkkkkk</p>
+                    <div class="photo-container">
+                        <img src="./img/06-04-25.jpg" alt="Macarrão apimentado" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">06/04/2025</div>
+                        <p class="timeline-desc">Foto onde você me mostrou pro mundo, no rolê do macarrão ultra
+                            apimentado kkkkkkkkkk</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/10-04-25.jpg" alt="Anel improvisado" class="timeline-img">
-                    <div class="timeline-date">10/04/2025</div>
-                    <p class="timeline-desc">Já começamos a falar de namoro e você mediu o seu dedo com esse anel
-                        improvisado</p>
+                    <div class="photo-container">
+                        <img src="./img/10-04-25.jpg" alt="Anel improvisado" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">10/04/2025</div>
+                        <p class="timeline-desc">Já começamos a falar de namoro e você mediu o seu dedo com esse
+                            anel improvisado</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/11-04-25.JPG" alt="Janta no Fazenda" class="timeline-img">
-                    <div class="timeline-date">11/04/2025</div>
-                    <p class="timeline-desc">Primeira visita ao Fazenda, janta especial</p>
+                    <div class="photo-container">
+                        <img src="./img/11-04-25.JPG" alt="Janta no Fazenda" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">11/04/2025</div>
+                        <p class="timeline-desc">Primeira visita ao Fazenda, janta especial</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/12-04-251.JPG" alt="Evento Japonês" class="timeline-img">
-                    <div class="timeline-date">12/04/2025</div>
-                    <p class="timeline-desc">Viagem para Mogi no evento Japonês. Uma foto tão linda quanto a mulher que
-                        eu tive a sorte de reencontrar</p>
+                    <div class="photo-container">
+                        <img src="./img/12-04-251.JPG" alt="Evento Japonês" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">12/04/2025</div>
+                        <p class="timeline-desc">Viagem para Mogi no evento Japonês. Uma foto tão linda quanto a
+                            mulher que eu tive a sorte de reencontrar</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/12-04-25.JPG" alt="Pedido de namoro" class="timeline-img">
-                    <div class="timeline-date">12/04/2025</div>
-                    <p class="timeline-desc">Momentos antes de eu pedir você oficialmente em namoro ❤️ Faz 1 mês!</p>
+                    <div class="photo-container">
+                        <img src="./img/12-04-25.JPG" alt="Pedido de namoro" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">12/04/2025</div>
+                        <p class="timeline-desc">Momentos antes de eu pedir você oficialmente em namoro ❤️ Faz 1
+                            mês!</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/12-04-252.jpg" alt="Aliança improvisada" class="timeline-img">
-                    <div class="timeline-date">12/04/2025</div>
-                    <p class="timeline-desc">Primeira foto ainda em Mogi, já com a aliança improvisada kkkkk</p>
+                    <div class="photo-container">
+                        <img src="./img/12-04-252.jpg" alt="Aliança improvisada" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">12/04/2025</div>
+                        <p class="timeline-desc">Primeira foto ainda em Mogi, já com a aliança improvisada kkkkk</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/13-04-25.JPG" alt="Noite especial" class="timeline-img">
-                    <div class="timeline-date">13/04/2025</div>
-                    <p class="timeline-desc">Noite especial pós pedido de namoro</p>
+                    <div class="photo-container">
+                        <img src="./img/13-04-25.JPG" alt="Noite especial" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">13/04/2025</div>
+                        <p class="timeline-desc">Noite especial pós pedido de namoro</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/16-04-25.jpg" alt="Dia da câmera" class="timeline-img">
-                    <div class="timeline-date">16/04/2025</div>
-                    <p class="timeline-desc">Dia que dei a sua câmera, você estava tão linda</p>
+                    <div class="photo-container">
+                        <img src="./img/16-04-25.jpg" alt="Dia da câmera" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">16/04/2025</div>
+                        <p class="timeline-desc">Dia que dei a sua câmera, você estava tão linda</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <video class="timeline-video" controls>
-                        <source src="./img/18-04-25.mov" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="timeline-date">18/04/2025</div>
-                    <p class="timeline-desc">Um bom dia pra você</p>
+                    <div class="photo-container">
+                        <video class="timeline-video" controls>
+                            <source src="./img/18-04-25.mov" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">18/04/2025</div>
+                        <p class="timeline-desc">Um bom dia pra você</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/19-04-25.JPG" alt="Páscoa" class="timeline-img">
-                    <div class="timeline-date">19/04/2025</div>
-                    <p class="timeline-desc">Páscoa! E a surpresa de que sim, eu tinha comprado um Ovo de Caribe</p>
+                    <div class="photo-container">
+                        <img src="./img/19-04-25.JPG" alt="Páscoa" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">19/04/2025</div>
+                        <p class="timeline-desc">Páscoa! E a surpresa de que sim, eu tinha comprado um Ovo de Caribe
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/27-04-25.JPG" alt="Churrasco" class="timeline-img">
-                    <div class="timeline-date">27/04/2025</div>
-                    <p class="timeline-desc">Churrasco na casa da sogra</p>
+                    <div class="photo-container">
+                        <img src="./img/27-04-25.JPG" alt="Churrasco" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">27/04/2025</div>
+                        <p class="timeline-desc">Churrasco na casa da sogra</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/29-04-25.JPG" alt="Dia do pastel" class="timeline-img">
-                    <div class="timeline-date">29/04/2025</div>
-                    <p class="timeline-desc">Fomos comer pastel, você estava muito linda nesse dia</p>
+                    <div class="photo-container">
+                        <img src="./img/29-04-25.JPG" alt="Dia do pastel" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">29/04/2025</div>
+                        <p class="timeline-desc">Fomos comer pastel, você estava muito linda nesse dia</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/03-05-25.JPG" alt="Pijaminha" class="timeline-img">
-                    <div class="timeline-date">03/05/2025</div>
-                    <p class="timeline-desc">Pijaminhaaaa</p>
+                    <div class="photo-container">
+                        <img src="./img/03-05-25.JPG" alt="Pijaminha" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">03/05/2025</div>
+                        <p class="timeline-desc">Pijaminhaaaa</p>
+                    </div>
                 </div>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <img src="./img/10-05-25.JPG" alt="Dia inesperado" class="timeline-img">
-                    <div class="timeline-date">10/05/2025</div>
-                    <p class="timeline-desc">Saimos pra comer em um dia inesperado, nem iriamos nos ver, sábado de dia
-                        das mães</p>
+                    <div class="photo-container">
+                        <img src="./img/10-05-25.JPG" alt="Dia inesperado" class="timeline-img">
+                    </div>
+                    <div class="text-content">
+                        <div class="timeline-date">10/05/2025</div>
+                        <p class="timeline-desc">Saimos pra comer em um dia inesperado, nem iriamos nos ver, sábado
+                            de dia das mães</p>
+                    </div>
                 </div>
-            </div>
+            </div>   
+
+            <h1 style="font-size: 3em;">Eu te amo ❤️</h1>
         </div>
     </div>
 
     <script>
+        // Floating hearts
         function createHearts() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
@@ -489,6 +625,7 @@
         }
         setInterval(createHearts, 300);
 
+        // Check code
         document.getElementById('okButton').addEventListener('click', () => {
             const code = document.getElementById('codeInput').value;
 
@@ -496,6 +633,7 @@
                 document.getElementById('page1').style.display = 'none';
                 document.getElementById('page2').style.display = 'block';
 
+                // Burst of hearts
                 for (let i = 0; i < 20; i++) {
                     setTimeout(createHearts, i * 100);
                 }
@@ -504,6 +642,7 @@
             }
         });
 
+        // Enter key support
         document.getElementById('codeInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 document.getElementById('okButton').click();
