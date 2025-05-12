@@ -5,27 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para o Amor da Minha Vida ❤️</title>
     <style>
+        /* Shared styles */
         body {
             background-color: #0a0a0a;
-            color: #a0e6a0; /* Soft green */
+            color: #a0e6a0;
             font-family: 'Arial', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .container {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-            text-align: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         h1 {
             font-size: 28px;
-            margin-bottom: 30px;
-            color: #d4af37; /* Gold for emphasis */
+            margin-bottom: 20px;
+            color: #d4af37;
             text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
         }
 
+        button {
+            background-color: #1a3a1a;
+            color: #a0e6a0;
+            border: 2px solid #a0e6a0;
+            border-radius: 10px;
+            padding: 10px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background-color: #a0e6a0;
+            color: #0a0a0a;
+            transform: scale(1.05);
+        }
+
+        /* Page 1 - Code Input */
+        #page1 {
+            display: flex;
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        input {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #a0e6a0;
+            border: 2px solid #a0e6a0;
+            border-radius: 10px;
+            padding: 12px;
+            width: 250px;
+            text-align: center;
+            outline: none;
+        }
+
+        /* Page 2 - Love Letter (hidden by default) */
+        #page2 {
+            display: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .love-letter {
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 1px solid #a0e6a0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .photo-placeholder {
+            background-color: rgba(160, 230, 160, 0.1);
+            border: 2px dashed #a0e6a0;
+            border-radius: 10px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0e6a0;
+        }
+
+        /* Floating hearts (for both pages) */
         .heart {
             position: absolute;
             width: 20px;
@@ -60,110 +142,83 @@
             50% { opacity: 0.8; }
             100% { transform: rotate(45deg) translateY(-200px) scale(0.5); opacity: 0; }
         }
-
-        .input-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        input {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #a0e6a0;
-            border: 2px solid #a0e6a0;
-            border-radius: 10px;
-            padding: 12px;
-            font-family: 'Arial', sans-serif;
-            font-size: 16px;
-            width: 250px;
-            text-align: center;
-            outline: none;
-            transition: all 0.3s;
-        }
-
-        input:focus {
-            border-color: #d4af37;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
-        }
-
-        button {
-            background-color: #1a3a1a;
-            color: #a0e6a0;
-            border: 2px solid #a0e6a0;
-            border-radius: 10px;
-            padding: 10px 25px;
-            font-family: 'Arial', sans-serif;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        button:hover {
-            background-color: #a0e6a0;
-            color: #0a0a0a;
-            transform: scale(1.05);
-        }
-
-        .hidden-message {
-            display: none;
-            margin-top: 30px;
-            font-size: 18px;
-            color: #d4af37;
-            animation: glow 2s infinite alternate;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 5px rgba(212, 175, 55, 0.5); }
-            to { text-shadow: 0 0 15px rgba(212, 175, 55, 0.8); }
-        }
     </style>
 </head>
 <body>
-    <h1>Você ainda tem o código? ❤️</h1>
-    
-    <div class="input-container">
-        <input type="text" id="codeInput" placeholder="Digite o código especial...">
-        <button id="okButton">OK</button>
+    <!-- Page 1: Code Input -->
+    <div id="page1" class="container">
+        <h1>Você ainda tem o código? ❤️</h1>
+        <div class="input-container">
+            <input type="text" id="codeInput" placeholder="Digite o código especial...">
+            <button id="okButton">OK</button>
+        </div>
     </div>
 
-    <div id="hiddenMessage" class="hidden-message">
-        O código está certo porém está incompleto.
+    <!-- Page 2: Love Letter & Photos (hidden initially) -->
+    <div id="page2" class="container">
+        <h1>Feliz 1 mês, Meu Amor! 💖</h1>
+        
+        <div class="love-letter">
+            <p>Querida [Seu Nome],</p>
+            <p>
+                Este é apenas um mock do texto que você vai escrever. 
+                Aqui você pode colocar todas as suas lembranças, sentimentos e 
+                mensagens especiais para ela. Pode ser longo, curto, poético, 
+                simples... o importante é que venha do coração. ❤️
+            </p>
+            <p>
+                Cada palavra aqui vai significar muito para ela, então 
+                dedique um tempinho para deixar isso incrível!
+            </p>
+            <p>Com todo meu amor,<br>[Seu Nome]</p>
+        </div>
+
+        <h2>Nossas Melhores Memórias</h2>
+        <div class="photo-grid">
+            <div class="photo-placeholder"><img src="./img/28-03-25.JPG" style="width: 100%"></div>
+            <div class="photo-placeholder">Foto 2</div>
+            <div class="photo-placeholder">Foto 3</div>
+            <div class="photo-placeholder">Foto 4</div>
+        </div>
+
+        <button id="backButton">Voltar</button>
     </div>
 
     <script>
-        // Create floating hearts
+        // Floating hearts
         function createHearts() {
             const heart = document.createElement('div');
             heart.classList.add('heart');
             heart.style.left = Math.random() * window.innerWidth + 'px';
             heart.style.top = window.innerHeight + 'px';
-            heart.style.opacity = '0';
             document.body.appendChild(heart);
 
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
+            setTimeout(() => heart.remove(), 4000);
         }
-
         setInterval(createHearts, 300);
 
-        // Handle button click
+        // Check code and switch pages
         document.getElementById('okButton').addEventListener('click', () => {
             const code = document.getElementById('codeInput').value;
-            const hiddenMessage = document.getElementById('hiddenMessage');
             
             if (code === "LOV3U4EVRN'EVR100" || code === 'te amo') {
-                hiddenMessage.style.display = 'block';
+                document.getElementById('page1').style.display = 'none';
+                document.getElementById('page2').style.display = 'flex';
                 
-                // Create a burst of hearts on success
+                // Burst of hearts on success
                 for (let i = 0; i < 20; i++) {
                     setTimeout(createHearts, i * 100);
                 }
             } else {
-                alert('Tente novamente... Podem existir mais pistas.');
+                alert('Tente novamente... talvez exista mais códigos por aí');
             }
+        });
+
+        // Back button (optional)
+        document.getElementById('backButton').addEventListener('click', () => {
+            document.getElementById('page1').style.display = 'flex';
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('codeInput').value = '';
         });
 
         // Also trigger on Enter key
